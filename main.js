@@ -5,18 +5,18 @@ function saveToLocalStorage(event) {
     let email = event.target.emailId.value;
     let phoneNumber = event.target.phonenumber.value;
     let dob = event.target.dob.value;
-  
-    let userDetails = JSON.parse(localStorage.getItem('userDetails')) || [];
-    let newUser = {
-      name: name,
-      email: email,
-      phoneNumber: phoneNumber,
-      dob: dob
-    };
-  
-    userDetails.push(newUser);
-    localStorage.setItem('userDetails', JSON.stringify(userDetails));
-
-    console.log('All users:', userDetails);
+  let obj={
+    name,
+    email,
+    phoneNumber,
+    dob
   }
-  
+  localStorage.setItem(obj.email,JSON.stringify(obj))
+   showdisplay(obj) 
+  }
+  function showdisplay(obj){
+    let parentItem=document.getElementById("AddItem");
+    let li=document.createElement('li');
+    li.textContent=obj.name + ' '+obj.email+' '+obj.phoneNumber+ ' '+obj.dob
+    parentItem.appendChild(li);
+  }
